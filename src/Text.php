@@ -12,8 +12,6 @@ declare(strict_types=1);
 
 namespace Geo6\Text;
 
-use ErrorException;
-
 class Text
 {
     /**
@@ -45,12 +43,12 @@ class Text
         $matrix = [];
         $maxlen = 0;
 
-        foreach($oldNormalized as $oindex => $ovalue){
+        foreach ($oldNormalized as $oindex => $ovalue) {
             $nkeys = array_keys($newNormalized, $ovalue);
             foreach ($nkeys as $nindex) {
                 $matrix[$oindex][$nindex] = (isset($matrix[$oindex - 1][$nindex - 1]) ? $matrix[$oindex - 1][$nindex - 1] + 1 : 1);
 
-                if ($matrix[$oindex][$nindex] > $maxlen){
+                if ($matrix[$oindex][$nindex] > $maxlen) {
                     $maxlen = $matrix[$oindex][$nindex];
                     $omax = $oindex + 1 - $maxlen;
                     $nmax = $nindex + 1 - $maxlen;
@@ -61,9 +59,9 @@ class Text
         if ($maxlen == 0) {
             return [
                 [
-                    'deleted' => $old,
+                    'deleted'  => $old,
                     'inserted' => $new,
-                ]
+                ],
             ];
         }
 
@@ -91,19 +89,20 @@ class Text
                 $returnOld .= (!empty($k['deleted']) ? '<del>'.implode(' ', $k['deleted']).'</del> ' : '');
                 $returnNew .= (!empty($k['inserted']) ? '<ins>'.implode(' ', $k['inserted']).'</ins> ' : '');
             } else {
-                $returnOld .= $k . ' ';
-                $returnNew .= $k . ' ';
+                $returnOld .= $k.' ';
+                $returnNew .= $k.' ';
             }
         }
+
         return [
             'old' => $returnOld,
             'new' => $returnNew,
         ];
     }
 
-
     /**
      * @author Olivier Laviale <olivier.laviale@gmail.com>
+     *
      * @link http://weirdog.com/blog/php/supprimer-les-accents-des-caracteres-accentues.html
      */
     public static function removeAccents(string $str, string $charset = 'utf-8'): string

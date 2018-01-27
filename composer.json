@@ -1,0 +1,19 @@
+{
+    "name": "geo6/php-text-tools",
+    "type": "library",
+    "license": "GPL-3.0",
+    "autoload": {
+      "psr-4": {
+        "Geo6\\Text\\": "src/"
+      }
+    },
+    "authors": [
+        {
+            "name": "Jonathan Beliën",
+            "email": "jbe@geo6.be"
+        }
+    ],
+    "require": {
+        "php": "^7.2"
+    }
+}

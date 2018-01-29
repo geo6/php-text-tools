@@ -1,7 +1,7 @@
 {
     "name": "geo6/php-text-tools",
     "type": "library",
-    "license": "GPL-3.0",
+    "license": "GPL-3.0-or-later",
     "autoload": {
       "psr-4": {
         "Geo6\\Text\\": "src/"

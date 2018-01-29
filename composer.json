@@ -1,5 +1,6 @@
 {
     "name": "geo6/php-text-tools",
+    "description": " PHP Library that provides tools for text processing (unaccent, diff, ...) ",
     "type": "library",
     "license": "GPL-3.0-or-later",
     "autoload": {
